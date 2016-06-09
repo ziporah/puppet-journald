@@ -5,8 +5,9 @@ class journald::service {
   }
   if $journald::upload['URL'] != undef {
     service { ['systemd-journal-upload']:
-      ensure => running,
-      enable => true,
+      ensure  => running,
+      enable  => true,
+      require => Package['systemd-journal-gateway'],
     }
   }
 }
