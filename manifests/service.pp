@@ -3,7 +3,7 @@ class journald::service {
     ensure => running,
     enable => true,
   }
-  if $journald::upload::URL != undef {
+  if $journald::upload['URL'] != undef {
     service { ['systemd-journal-upload']:
       ensure => running,
       enable => true,
