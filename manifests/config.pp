@@ -22,10 +22,19 @@ class journald::config {
     content => template("${module_name}/journald.conf.erb"),
   }
 
-  file { '/etc/systemd/journal-upload.conf':
-    ensure  => 'file',
-    owner   => 0,
-    group   => 0,
-    content => template("${module_name}/journal-upload.conf.erb"),
+  if $journald::upload['URL'] != undef {
+    file { '/var/lib/systemd/journal-upload/':
+      ensure => $journald_dir,
+      force  => true,
+      owner  => 0,
+      group  => 'systemd-journal',
+    }
+
+    file { '/etc/systemd/journal-upload.conf':
+      ensure  => 'file',
+      owner   => 0,
+      group   => 0,
+      content => template("${module_name}/journal-upload.conf.erb"),
+    }
   }
 }
