@@ -26,8 +26,8 @@ class journald::config {
     file { '/var/lib/systemd/journal-upload/':
       ensure => $journald_dir,
       force  => true,
-      owner  => 0,
-      group  => 'systemd-journal',
+      owner  => 'systemd-journal-upload'
+      group  => 'systemd-journal-upload',
     }
 
     file { '/etc/systemd/journal-upload.conf':
