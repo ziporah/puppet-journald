@@ -7,6 +7,7 @@
 2. [Setup - The basics of getting started with journald](#setup)
     * [Setup requirements](#setup-requirements)
     * [Beginning with journald](#beginning-with-journald)
+    * [Adding remote logging to journald](#remote-logging-with-journald)
 3. [Limitations - OS compatibility, etc.](#limitations)
 4. [Development - Guide for contributing to the module](#development)
 
@@ -37,6 +38,23 @@ that is received from a variety of sources:
 	    'ForwardToConsole'  => 'no',
 	    'TTYPath'           => '/dev/console',
 	  }
+    }
+
+## Remote logging with journald
+
+    class {'journald': upload => {
+      'Url' => 'http://10.0.0.1:19532',
+      }
+    }
+
+    Or using https
+
+    class {'journald': upload => {
+      'Url'                     => 'https://10.0.0.1:19532',
+      'ServerKeyFile'           => '/etc/ssl/private/journal-upload.pem',
+      'ServerCertificateFile'   => '/etc/ssl/certs/journal-upload.pem',
+      'TrustedCertificateFile'  => '/etc/ssl/ca/trusted.pem',
+      }
     }
 
 ## Limitations

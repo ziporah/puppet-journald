@@ -18,4 +18,10 @@ class journald::params {
     'MaxLevelKMsg'      => 'notice',
     'MaxLevelConsole'   => 'info',
   }
+  $default_upload = {
+    'URL'                    => undef,
+    'ServerKeyFile'          => undef,
+    'ServerCertificateFile'  => undef,
+    'TrustedCertificateFile' => undef,
+  }
 }
