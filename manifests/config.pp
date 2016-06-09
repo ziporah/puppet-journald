@@ -13,6 +13,7 @@ class journald::config {
     force  => true,
     owner  => 0,
     group  => 'systemd-journal',
+    mode   => 2755,
   }
 
   file { '/etc/systemd/journald.conf':

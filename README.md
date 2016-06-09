@@ -41,6 +41,8 @@ that is received from a variety of sources:
     }
 
 ## Remote logging with journald
+    Make sure the systemd-journal-upload is in the systemd-journal group,
+		otherwise the upload process will not have access to the journal files
 
     class {'journald': upload => {
       'Url' => 'http://10.0.0.1:19532',
