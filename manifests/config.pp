@@ -29,6 +29,7 @@ class journald::config {
       force  => true,
       owner  => 'systemd-journal-upload',
       group  => 'systemd-journal-upload',
+      require => Package['systemd-journal-gateway'],
     }
 
     file { '/etc/systemd/journal-upload.conf':
